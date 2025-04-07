@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hellcase Copy - CS:GO Skins</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/inventory.css">
+    <link rel="stylesheet" href="css/plinko.css">
+    <link rel="stylesheet" href="css/upgrade.css">
+    <link rel="stylesheet" href="css/battles.css">
+    <link rel="stylesheet" href="css/wheel.css">
+    <link rel="stylesheet" href="css/payment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="site-wrapper">
+        <!-- Admin Console -->
+        <button id="admin-console-button" class="admin-console-button"><i class="fas fa-terminal"></i></button>
+        <div id="admin-console-overlay" class="admin-console-overlay">
+            <div class="admin-console-header">
+                <h4>Admin Console</h4>
+                <button id="admin-console-close" class="admin-console-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="admin-console-content">
+                <div class="admin-console-input">
+                    <label>Admin Code</label>
+                    <input type="password" id="admin-access-code" placeholder="Enter admin access code">
+                </div>
+                <div class="admin-console-input">
+                    <label>Username</label>
+                    <input type="text" id="admin-target-user" placeholder="Enter target username" disabled>
+                </div>
+                <div class="admin-console-input">
+                    <label>Amount</label>
+                    <input type="number" id="admin-amount" placeholder="Enter amount" disabled>
+                </div>
+                <div class="admin-console-actions">
+                    <button id="admin-execute-btn" disabled>Execute</button>
+                </div>
+            </div>
+            <div id="admin-console-result" class="admin-console-result"></div>
+        </div>
+        <!-- Header -->
+        <header class="header">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <img src="images/logo.svg" alt="Hellcase Logo">
+                </div>
+                
+                <nav class="main-nav">
+                    <ul>
+                        <li class="active"><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-box-open"></i> Cases</a></li>
+                        <li><a href="#" id="battles-link"><i class="fas fa-trophy"></i> Battles</a></li>
+                        <li><a href="#" id="plinko-minigame-link"><i class="fas fa-dice"></i> Plinko Game</a></li>
+                        <!-- Wheel Game entfernt -->
+                        <!--<li><a href="#" id="wheel-minigame-link"><i class="fas fa-circle-notch"></i> Wheel Game</a></li>-->
+                        <li><a href="#" id="upgrades-link"><i class="fas fa-arrow-up-right-dots"></i> Upgrades</a></li>
+                        <li><a href="#"><i class="fas fa-handshake"></i> Contracts</a></li>
+                        <li><a href="#"><i class="fas fa-store"></i> Shop</a></li>
+                        <li><a href="#"><i class="fas fa-gift"></i> Bonus</a></li>
+                        <li><a href="#"><i class="fas fa-user-plus"></i> Referrals</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="user-actions">
+                    <div class="balance">
+                        <span>Balance: </span>
+                        <strong>$0.00</strong>
+                        <a href="#" class="deposit-btn">Deposit</a>
+                    </div>
+                    <div class="auth-buttons">
+                        <a href="#" class="login-btn"><i class="fas fa-sign-in-alt"></i> Sign in</a>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Banner -->
+        <div class="banner">
+            <div class="banner-content">
+                <h1>Open Cases & Win CS:GO Skins</h1>
+                <p>Best CS:GO Cases with highest odds of winning high tier skins!</p>
+                <a href="#" class="cta-button">Open Cases Now</a>
+            </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+            <div class="filter-wrapper">
+                <div class="search-box">
+                    <input type="text" placeholder="Search cases...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="filter-options">
+                    <div class="filter-option active">
+                        <i class="fas fa-fire"></i>
+                        <span>Popular</span>
+                    </div>
+                    <div class="filter-option">
+                        <i class="fas fa-crown"></i>
+                        <span>Premium</span>
+                    </div>
+                    <div class="filter-option">
+                        <i class="fas fa-percentage"></i>
+                        <span>Best Odds</span>
+                    </div>
+                    <div class="filter-option">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>Lowest Price</span>
+                    </div>
+                    <div class="filter-option">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>Highest Price</span>
+                    </div>
+                </div>
+                <div class="sort-options">
+                    <select>
+                        <option>All Categories</option>
+                        <option>Knife Cases</option>
+                        <option>Glove Cases</option>
+                        <option>Rifle Cases</option>
+                        <option>Pistol Cases</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cases Grid -->
+        <div class="cases-section">
+            <h2 class="section-title">Popular Cases</h2>
+            <div class="cases-grid">
+                <!-- Case 1 - Starter Case: Low risk, low reward -->
+                <div class="case-item" data-case-type="starter">
+                    <div class="case-image">
+                        <img src="images/case1.svg" alt="Starter Case">
+                        <div class="case-price">$4.99</div>
+                    </div>
+                    <div class="case-info">
+                        <h3>Starter Case</h3>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span>Opened:</span>
+                                <strong>52,458</strong>
+                            </div>
+                            <div class="stat">
+                                <span>Best Drop:</span>
+                                <strong>$40</strong>
+                            </div>
+                        </div>
+                        <div class="case-odds">
+                            <span class="odds-text">Low risk, small rewards</span>
+                            <div class="odds-bar">
+                                <div class="odds-indicator" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="open-case-btn">Open Case</a>
+                </div>
+                
+                <!-- Case 2 - Standard Case: Medium risk, medium reward -->
+                <div class="case-item" data-case-type="standard">
+                    <div class="case-image">
+                        <img src="images/case2.svg" alt="Standard Case">
+                        <div class="case-price">$19.99</div>
+                    </div>
+                    <div class="case-info">
+                        <h3>Standard Case</h3>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span>Opened:</span>
+                                <strong>28,785</strong>
+                            </div>
+                            <div class="stat">
+                                <span>Best Drop:</span>
+                                <strong>$150</strong>
+                            </div>
+                        </div>
+                        <div class="case-odds">
+                            <span class="odds-text">Balanced risk & reward</span>
+                            <div class="odds-bar">
+                                <div class="odds-indicator" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="open-case-btn">Open Case</a>
+                </div>
+                
+                <!-- Case 3 - Premium Case: Higher risk, good rewards -->
+                <div class="case-item" data-case-type="premium">
+                    <div class="case-image">
+                        <img src="images/case3.svg" alt="Premium Case">
+                        <div class="case-price">$49.99</div>
+                    </div>
+                    <div class="case-info">
+                        <h3>Premium Case</h3>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span>Opened:</span>
+                                <strong>15,612</strong>
+                            </div>
+                            <div class="stat">
+                                <span>Best Drop:</span>
+                                <strong>$430</strong>
+                            </div>
+                        </div>
+                        <div class="case-odds">
+                            <span class="odds-text">Higher risk, better rewards</span>
+                            <div class="odds-bar">
+                                <div class="odds-indicator" style="width: 45%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="open-case-btn">Open Case</a>
+                </div>
+                
+                <!-- Case 4 -->
+                <div class="case-item">
+                    <div class="case-image">
+                        <img src="images/case4.svg" alt="AK-47 Case">
+                        <div class="case-price">$19.99</div>
+                    </div>
+                    <div class="case-info">
+                        <h3>AK-47 Case</h3>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span>Opened:</span>
+                                <strong>32,458</strong>
+                            </div>
+                            <div class="stat">
+                                <span>Best Drop:</span>
+                                <strong>$950</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="open-case-btn">Open Case</a>
+                </div>
+                
+                <!-- Case 5 -->
+                <div class="case-item">
+                    <div class="case-image">
+                        <img src="images/case5.svg" alt="AWP Case">
+                        <div class="case-price">$22.99</div>
+                    </div>
+                    <div class="case-info">
+                        <h3>AWP Case</h3>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span>Opened:</span>
+                                <strong>28,756</strong>
+                            </div>
+                            <div class="stat">
+                                <span>Best Drop:</span>
+                                <strong>$1,150</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="open-case-btn">Open Case</a>
+                </div>
+                
+                <!-- Case 6 - Legendary Case: Very high risk, massive reward -->
+                <div class="case-item featured" data-case-type="legendary">
+                    <div class="case-image">
+                        <img src="images/case6.svg" alt="Legendary Case">
+                        <div class="case-price">$199.99</div>
+                        <div class="featured-tag">HOT</div>
+                    </div>
+                    <div class="case-info">
+                        <h3>Legendary Case</h3>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span>Opened:</span>
+                                <strong>3,458</strong>
+                            </div>
+                            <div class="stat">
+                                <span>Best Drop:</span>
+                                <strong>$1,850</strong>
+                            </div>
+                        </div>
+                        <div class="case-odds">
+                            <span class="odds-text">Extreme risk, legendary rewards</span>
+                            <div class="odds-bar">
+                                <div class="odds-indicator" style="width: 15%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="open-case-btn">Open Case</a>
+                </div>
+                
+                <!-- Case 7 -->
+                <div class="case-item">
+                    <div class="case-image">
+                        <img src="images/case7.svg" alt="Pistol Case">
+                        <div class="case-price">$14.99</div>
+                    </div>
+                    <div class="case-info">
+                        <h3>Pistol Case</h3>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span>Opened:</span>
+                                <strong>42,458</strong>
+                            </div>
+                            <div class="stat">
+                                <span>Best Drop:</span>
+                                <strong>$750</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="open-case-btn">Open Case</a>
+                </div>
+                
+                <!-- Case 8 -->
+                <div class="case-item">
+                    <div class="case-image">
+                        <img src="images/case8.svg" alt="M4A4 Case">
+                        <div class="case-price">$19.99</div>
+                    </div>
+                    <div class="case-info">
+                        <h3>M4A4 Case</h3>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span>Opened:</span>
+                                <strong>29,458</strong>
+                            </div>
+                            <div class="stat">
+                                <span>Best Drop:</span>
+                                <strong>$920</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="open-case-btn">Open Case</a>
+                </div>
+            </div>
+            
+            <div class="load-more">
+                <button class="load-more-btn">Load More Cases</button>
+            </div>
+        </div>
+
+        <!-- Latest Drops -->
+        <div class="latest-drops-section">
+            <h2 class="section-title">Latest Drops</h2>
+            <div class="drops-slider">
+                <div class="drop-item">
+                    <div class="drop-weapon">
+                        <img src="images/weapon1.svg" alt="AWP | Dragon Lore (Factory New)">
+                        <div class="weapon-rarity legendary"></div>
+                    </div>
+                    <div class="drop-info">
+                        <h4>AWP | Dragon Lore (Factory New)</h4>
+                        <div class="drop-price">$1,850.42</div>
+                        <div class="drop-user">
+                            <img src="images/avatar1.svg" alt="User Avatar">
+                            <span>xXDragonSlayerXx</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drop-item">
+                    <div class="drop-weapon">
+                        <img src="images/weapon2.svg" alt="Karambit | Fade (Factory New)">
+                        <div class="weapon-rarity legendary"></div>
+                    </div>
+                    <div class="drop-info">
+                        <h4>Karambit | Fade (Factory New)</h4>
+                        <div class="drop-price">$1,245.89</div>
+                        <div class="drop-user">
+                            <img src="images/avatar2.svg" alt="User Avatar">
+                            <span>KnifeCollector</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drop-item">
+                    <div class="drop-weapon">
+                        <img src="images/weapon3.svg" alt="M4A4 | Howl (Minimal Wear)">
+                        <div class="weapon-rarity legendary"></div>
+                    </div>
+                    <div class="drop-info">
+                        <h4>M4A4 | Howl (Minimal Wear)</h4>
+                        <div class="drop-price">$985.65</div>
+                        <div class="drop-user">
+                            <img src="images/avatar3.svg" alt="User Avatar">
+                            <span>LuckyShooter</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drop-item">
+                    <div class="drop-weapon">
+                        <img src="images/weapon4.svg" alt="AK-47 | Fire Serpent (Field-Tested)">
+                        <div class="weapon-rarity mythical"></div>
+                    </div>
+                    <div class="drop-info">
+                        <h4>AK-47 | Fire Serpent (Field-Tested)</h4>
+                        <div class="drop-price">$745.20</div>
+                        <div class="drop-user">
+                            <img src="images/avatar4.svg" alt="User Avatar">
+                            <span>HeadshotMaster</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drop-item">
+                    <div class="drop-weapon">
+                        <img src="images/weapon5.svg" alt="Butterfly Knife | Doppler (Factory New)">
+                        <div class="weapon-rarity legendary"></div>
+                    </div>
+                    <div class="drop-info">
+                        <h4>Butterfly Knife | Doppler (Factory New)</h4>
+                        <div class="drop-price">$1,320.75</div>
+                        <div class="drop-user">
+                            <img src="images/avatar5.svg" alt="User Avatar">
+                            <span>ButterflyEffect</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <div class="feature">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Secure Payments</h3>
+                <p>Multiple secure payment methods available</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-bolt"></i>
+                <h3>Instant Delivery</h3>
+                <p>Get your skins instantly after opening</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Support</h3>
+                <p>Our support team is always available</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-gift"></i>
+                <h3>Daily Free Case</h3>
+                <p>Open a free case every 24 hours</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <h3>Hellcase</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Cases</h3>
+                    <ul>
+                        <li><a href="#">Popular Cases</a></li>
+                        <li><a href="#">New Cases</a></li>
+                        <li><a href="#">Knife Cases</a></li>
+                        <li><a href="#">Glove Cases</a></li>
+                        <li><a href="#">Rifle Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help</h3>
+                    <ul>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Payment Methods</a></li>
+                        <li><a href="#">Delivery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <div class="newsletter">
+                        <h4>Get the latest updates</h4>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Your email">
+                            <button>Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 Hellcase Copy. This is a demonstration site. Not affiliated with Valve or Steam.</p>
+                <div class="payment-methods">
+                    <img src="images/payment-methods.svg" alt="Payment Methods">
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+    
+    <!-- Upgrade System Modal -->
+    <div class="upgrade-modal-overlay" id="upgrade-modal" style="display:none;">
+        <div class="upgrade-modal">
+            <button class="upgrade-modal-close"><i class="fas fa-times"></i></button>
+            <h2>Upgrade Your Skins</h2>
+            
+            <div class="upgrade-tabs">
+                <div class="upgrade-tab active" data-tab="upgrade">Item Upgrade</div>
+                <div class="upgrade-tab" data-tab="contract">Trade Up Contract</div>
+            </div>
+            
+            <div class="upgrade-info">
+                Select an item from your inventory on the left, then choose an item to upgrade to on the right.
+                The higher the value difference, the lower your odds of a successful upgrade.
+            </div>
+            
+            <div class="upgrade-section">
+                <div class="upgrade-selection">
+                    <div class="item-selection">
+                        <h3>Your Inventory</h3>
+                        <div id="upgrade-inventory-items">
+                            <div class="no-items-message">
+                                You don't have any items in your inventory.
+                                Open cases to get some items first!
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="upgrade-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="upgrade-options">
+                        <h3>Upgrade To</h3>
+                        <div class="target-filters">
+                            <div class="price-filter">
+                                <div>
+                                    <div class="filter-label">Price Range</div>
+                                    <select id="upgrade-price-filter">
+                                        <option value="any">Any Price</option>
+                                        <option value="low">Low Tier ($1-$50)</option>
+                                        <option value="mid">Mid Tier ($50-$500)</option>
+                                        <option value="high">High Tier ($500+)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="rarity-filter">
+                                <div class="filter-label">Rarity</div>
+                                <select id="upgrade-rarity-filter">
+                                    <option value="any">Any Rarity</option>
+                                    <option value="common">Common</option>
+                                    <option value="uncommon">Uncommon</option>
+                                    <option value="rare">Rare</option>
+                                    <option value="mythical">Mythical</option>
+                                    <option value="legendary">Legendary</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div id="upgrade-target-items"></div>
+                    </div>
+                </div>
+                
+                <div class="upgrade-controls">
+                    <div class="upgrade-chance">
+                        Success Chance: <span class="chance-value">0%</span>
+                    </div>
+                    
+                    <button class="upgrade-button" id="upgrade-btn" disabled>
+                        <i class="fas fa-arrow-up"></i> Upgrade
+                    </button>
+                    
+                    <div class="value-difference">
+                        Value difference: <span id="value-diff">$0.00</span>
+                    </div>
+                </div>
+                
+                <div class="upgrade-result" id="upgrade-result">
+                    <!-- Result will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Battles Modal -->
+    <div id="battles-modal" class="battles-modal-overlay" style="display: none;">
+        <div class="battles-modal">
+            <button class="battles-modal-close"><i class="fas fa-times"></i></button>
+            <div class="battles-tabs">
+                <div class="battles-tab active" data-tab="join">Join Battles</div>
+                <div class="battles-tab" data-tab="create">Create Battle</div>
+                <div class="battles-tab" data-tab="my">My Battles</div>
+            </div>
+            
+            <div class="battles-content active" data-content="join">
+                <div class="battles-filter">
+                    <div class="battles-search">
+                        <input type="text" placeholder="Search battles...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="battles-filters">
+                        <select class="battle-filter-select" id="battle-status-filter">
+                            <option value="all">All Statuses</option>
+                            <option value="waiting">Waiting</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                        <select class="battle-filter-select" id="battle-player-filter">
+                            <option value="all">All Players</option>
+                            <option value="2">2 Players</option>
+                            <option value="3">3 Players</option>
+                            <option value="4">4 Players</option>
+                        </select>
+                        <select class="battle-filter-select" id="battle-price-filter">
+                            <option value="all">All Prices</option>
+                            <option value="low">$0 - $50</option>
+                            <option value="medium">$50 - $200</option>
+                            <option value="high">$200+</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="battles-list" id="battles-list">
+                    <!-- Sample Battle Card - These will be dynamically generated -->
+                    <div class="battle-card">
+                        <div class="battle-header">
+                            <div class="battle-name">Dragon Hunt</div>
+                            <div class="battle-value">$124.95</div>
+                        </div>
+                        <div class="battle-players">
+                            <div class="battle-player-slots">
+                                <div class="player-slot filled">
+                                    <img src="images/avatar1.svg" class="player-avatar" alt="Player">
+                                    <div class="player-name">xXDragonSlayerXx</div>
+                                </div>
+                                <div class="player-slot empty">
+                                    <i class="fas fa-user-plus"></i>
+                                    <div>Empty Slot</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="battle-cases">
+                            <div class="battle-case">
+                                <img src="images/case1.svg" alt="Case">
+                                <div class="battle-case-name">Premium Case</div>
+                            </div>
+                            <div class="battle-case">
+                                <img src="images/case5.svg" alt="Case">
+                                <div class="battle-case-name">AWP Case</div>
+                            </div>
+                        </div>
+                        <div class="battle-actions">
+                            <button class="battle-join-btn">Join Battle</button>
+                            <div class="battle-status waiting">
+                                <i class="fas fa-clock"></i>
+                                Waiting
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="battle-card">
+                        <div class="battle-header">
+                            <div class="battle-name">Knife Party</div>
+                            <div class="battle-value">$239.95</div>
+                        </div>
+                        <div class="battle-players">
+                            <div class="battle-player-slots">
+                                <div class="player-slot filled">
+                                    <img src="images/avatar2.svg" class="player-avatar" alt="Player">
+                                    <div class="player-name">KnifeCollector</div>
+                                </div>
+                                <div class="player-slot filled">
+                                    <img src="images/avatar3.svg" class="player-avatar" alt="Player">
+                                    <div class="player-name">LuckyShooter</div>
+                                </div>
+                                <div class="player-slot empty">
+                                    <i class="fas fa-user-plus"></i>
+                                    <div>Empty Slot</div>
+                                </div>
+                                <div class="player-slot empty">
+                                    <i class="fas fa-user-plus"></i>
+                                    <div>Empty Slot</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="battle-cases">
+                            <div class="battle-case">
+                                <img src="images/case2.svg" alt="Case">
+                                <div class="battle-case-name">Knife Case</div>
+                            </div>
+                            <div class="battle-case">
+                                <img src="images/case2.svg" alt="Case">
+                                <div class="battle-case-name">Knife Case</div>
+                            </div>
+                        </div>
+                        <div class="battle-actions">
+                            <button class="battle-join-btn">Join Battle</button>
+                            <div class="battle-status waiting">
+                                <i class="fas fa-clock"></i>
+                                Waiting
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="battle-card">
+                        <div class="battle-header">
+                            <div class="battle-name">AWP Masters</div>
+                            <div class="battle-value">$91.96</div>
+                        </div>
+                        <div class="battle-players">
+                            <div class="battle-player-slots">
+                                <div class="player-slot filled">
+                                    <img src="images/avatar4.svg" class="player-avatar" alt="Player">
+                                    <div class="player-name">HeadshotMaster</div>
+                                </div>
+                                <div class="player-slot filled">
+                                    <img src="images/avatar5.svg" class="player-avatar" alt="Player">
+                                    <div class="player-name">ButterflyEffect</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="battle-cases">
+                            <div class="battle-case">
+                                <img src="images/case5.svg" alt="Case">
+                                <div class="battle-case-name">AWP Case</div>
+                            </div>
+                            <div class="battle-case">
+                                <img src="images/case5.svg" alt="Case">
+                                <div class="battle-case-name">AWP Case</div>
+                            </div>
+                        </div>
+                        <div class="battle-actions">
+                            <button class="battle-join-btn disabled">Join Battle</button>
+                            <div class="battle-status in-progress">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                In Progress
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="battles-content" data-content="create">
+                <div class="create-battle-form">
+                    <div class="form-group">
+                        <label for="battle-name">Battle Name</label>
+                        <input type="text" id="battle-name" placeholder="Enter a name for your battle">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Number of Players</label>
+                        <div class="player-count-selection">
+                            <div class="player-count-option selected" data-count="2">
+                                <i class="fas fa-users"></i>
+                                <div class="player-count-value">2 Players</div>
+                            </div>
+                            <div class="player-count-option" data-count="3">
+                                <i class="fas fa-users"></i>
+                                <div class="player-count-value">3 Players</div>
+                            </div>
+                            <div class="player-count-option" data-count="4">
+                                <i class="fas fa-users"></i>
+                                <div class="player-count-value">4 Players</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Select Cases</label>
+                        <div class="create-battle-cases">
+                            <div class="create-battle-case" data-id="1">
+                                <img src="images/case1.svg" alt="Premium Case">
+                                <div class="create-case-name">Premium Case</div>
+                                <div class="create-case-price">$24.99</div>
+                            </div>
+                            <div class="create-battle-case" data-id="2">
+                                <img src="images/case2.svg" alt="Knife Case">
+                                <div class="create-case-name">Knife Case</div>
+                                <div class="create-case-price">$39.99</div>
+                            </div>
+                            <div class="create-battle-case" data-id="3">
+                                <img src="images/case3.svg" alt="Glove Case">
+                                <div class="create-case-name">Glove Case</div>
+                                <div class="create-case-price">$29.99</div>
+                            </div>
+                            <div class="create-battle-case" data-id="4">
+                                <img src="images/case4.svg" alt="AK-47 Case">
+                                <div class="create-case-name">AK-47 Case</div>
+                                <div class="create-case-price">$19.99</div>
+                            </div>
+                            <div class="create-battle-case" data-id="5">
+                                <img src="images/case5.svg" alt="AWP Case">
+                                <div class="create-case-name">AWP Case</div>
+                                <div class="create-case-price">$22.99</div>
+                            </div>
+                            <div class="create-battle-case" data-id="6">
+                                <img src="images/case6.svg" alt="Dragon Lore Case">
+                                <div class="create-case-name">Dragon Lore Case</div>
+                                <div class="create-case-price">$99.99</div>
+                            </div>
+                            <div class="create-battle-case" data-id="7">
+                                <img src="images/case7.svg" alt="Pistol Case">
+                                <div class="create-case-name">Pistol Case</div>
+                                <div class="create-case-price">$14.99</div>
+                            </div>
+                            <div class="create-battle-case" data-id="8">
+                                <img src="images/case8.svg" alt="M4A4 Case">
+                                <div class="create-case-name">M4A4 Case</div>
+                                <div class="create-case-price">$19.99</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bot-options">
+                        <div class="bot-option">
+                            <input type="checkbox" id="add-bots" class="bot-checkbox">
+                            <label for="add-bots">Fill empty slots with bots</label>
+                        </div>
+                        <div class="bot-option">
+                            <input type="checkbox" id="private-battle" class="bot-checkbox">
+                            <label for="private-battle">Private battle (invitation only)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="create-battle-cost">
+                        <div class="cost-label">Total Cost:</div>
+                        <div class="cost-value">$0.00</div>
+                    </div>
+                    
+                    <div class="create-battle-actions">
+                        <button class="create-battle-btn disabled">Create Battle</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="battles-content" data-content="my">
+                <div class="my-battles-list" id="my-battles-list">
+                    <!-- If no battles -->
+                    <div class="no-battles-message">
+                        You haven't created or joined any battles yet. Create one or join an existing battle!
+                    </div>
+                    
+                    <!-- My battles will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Battle Room Modal -->
+    <div id="battle-room" class="battle-room-overlay" style="display: none;">
+        <div class="battle-room">
+            <div class="battle-room-header">
+                <div>
+                    <div class="battle-room-title">Dragon Hunt</div>
+                    <div class="battle-room-details">2 Players Battle</div>
+                </div>
+                <div class="battle-room-value">Total Value: $124.95</div>
+                <button class="battle-room-close"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="battle-area">
+                <div class="battle-participants">
+                    <div class="battle-participant active you">
+                        <div class="participant-header">
+                            <img src="images/avatar1.svg" class="participant-avatar" alt="Player">
+                            <div class="participant-name">You</div>
+                        </div>
+                        <div class="participant-winnings">
+                            <div class="winnings-title">Winnings: $0.00</div>
+                            <div class="winning-items">
+                                <!-- Winning items will be added here during battle -->
+                            </div>
+                        </div>
+                        <div class="player-total">Total: $0.00</div>
+                    </div>
+                    
+                    <div class="battle-participant">
+                        <div class="participant-header">
+                            <img src="images/avatar2.svg" class="participant-avatar" alt="Player">
+                            <div class="participant-name">KnifeCollector</div>
+                        </div>
+                        <div class="participant-winnings">
+                            <div class="winnings-title">Winnings: $0.00</div>
+                            <div class="winning-items">
+                                <!-- Winning items will be added here during battle -->
+                            </div>
+                        </div>
+                        <div class="player-total">Total: $0.00</div>
+                    </div>
+                </div>
+                
+                <div class="battle-rounds">
+                    <!-- Battle rounds will be added here during battle -->
+                </div>
+                
+                <div class="battle-status-waiting" id="battle-waiting">
+                    <div class="waiting-title">Waiting for players...</div>
+                    <div class="waiting-text">The battle will start once all players have joined.</div>
+                    <div class="battle-progress">
+                        <div class="progress-bar" style="width: 50%;"></div>
+                    </div>
+                    <div class="battle-controls">
+                        <button class="battle-control-btn start-battle-btn">Start Battle</button>
+                        <button class="battle-control-btn leave-battle-btn">Leave Battle</button>
+                    </div>
+                </div>
+                
+                <div class="battle-result" id="battle-result" style="display: none;">
+                    <!-- Battle result will be displayed here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wheel of Fortune Modal -->
+        <div id="wheel-modal" class="wheel-modal-overlay" style="display: none;">
+            <div class="wheel-modal">
+                <button id="wheel-modal-close" class="wheel-modal-close"><i class="fas fa-times"></i></button>
+                <div class="wheel-header">
+                    <h2>Wheel of Fortune</h2>
+                    <div class="wheel-balance">Your Balance: <span id="wheel-user-balance">$0.00</span></div>
+                </div>
+                <div class="wheel-container">
+                    <div class="wheel-section">
+                        <div class="wheel-left">
+                            <div class="wheel-canvas-container">
+                                <canvas id="wheel-canvas" class="wheel-canvas" width="400" height="400"></canvas>
+                                <div id="wheel-spinner" class="wheel-spinner"></div>
+                                <div id="wheel-pointer" class="wheel-pointer"></div>
+                            </div>
+                            <div class="wheel-multipliers">
+                                <div class="wheel-multiplier active" data-multiplier="1.5">1.5x</div>
+                                <div class="wheel-multiplier" data-multiplier="2">2x</div>
+                                <div class="wheel-multiplier" data-multiplier="3">3x</div>
+                                <div class="wheel-multiplier" data-multiplier="5">5x</div>
+                                <div class="wheel-multiplier" data-multiplier="10">10x</div>
+                                <div class="wheel-multiplier" data-multiplier="50">50x</div>
+                            </div>
+                        </div>
+                        <div class="wheel-right">
+                            <div class="wheel-bet-controls">
+                                <h3>Place Your Bet</h3>
+                                <div class="wheel-bet-amount">$<span id="wheel-bet-value">5.00</span></div>
+                                <div class="wheel-bet-input-group">
+                                    <input type="number" id="wheel-bet-input" min="1" step="1" value="5">
+                                    <div class="wheel-bet-buttons">
+                                        <button class="wheel-bet-button" id="wheel-bet-increase">▲</button>
+                                        <button class="wheel-bet-button" id="wheel-bet-decrease">▼</button>
+                                    </div>
+                                </div>
+                                <div class="wheel-bet-presets">
+                                    <button class="wheel-bet-preset" data-value="1">$1</button>
+                                    <button class="wheel-bet-preset" data-value="5">$5</button>
+                                    <button class="wheel-bet-preset" data-value="10">$10</button>
+                                    <button class="wheel-bet-preset" data-value="25">$25</button>
+                                    <button class="wheel-bet-preset" data-value="50">$50</button>
+                                    <button class="wheel-bet-preset" data-value="100">$100</button>
+                                </div>
+                                <button id="wheel-spin-btn" class="wheel-spin-btn">SPIN WHEEL</button>
+                                <div id="wheel-result" class="wheel-result">
+                                    <h3 class="result-title">YOU WON!</h3>
+                                    <div class="result-multiplier">x3.5</div>
+                                    <div class="result-payout">Payout: <span>$17.50</span></div>
+                                </div>
+                            </div>
+                            <div class="wheel-history">
+                                <h3>History</h3>
+                                <div class="wheel-history-items" id="wheel-history-container">
+                                    <!-- History items will be added dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/script.js"></script>
+    <script src="js/payment.js"></script>
+    <script src="js/deposit.js"></script>
+</body>
+</html>

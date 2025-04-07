@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="caseGradient8" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2a2a2a"/>
+            <stop offset="100%" stop-color="#3a3a3a"/>
+        </linearGradient>
+    </defs>
+    <rect width="300" height="200" fill="url(#caseGradient8)"/>
+    <rect x="50" y="30" width="200" height="140" stroke="#8847ff" stroke-width="4" fill="none" rx="10"/>
+    <text x="150" y="90" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="24" fill="#8847ff">M4A4</text>
+    <text x="150" y="130" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="18" fill="#ffffff">CASE</text>
+</svg>

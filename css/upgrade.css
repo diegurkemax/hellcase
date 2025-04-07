@@ -1,0 +1,495 @@
+/* Upgrade Modal */
+.upgrade-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.upgrade-modal-content {
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    position: relative;
+    overflow: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.upgrade-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #aaa;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.upgrade-modal-close:hover {
+    color: #fff;
+}
+
+.upgrade-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.upgrade-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.upgrade-tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.upgrade-tab {
+    padding: 10px 15px;
+    background-color: #333;
+    color: #aaa;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.upgrade-tab.active, .upgrade-tab:hover {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+/* Upgrade Content */
+.upgrade-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: 20px;
+    max-height: 70vh;
+}
+
+.upgrade-inventory, .upgrade-targets {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+}
+
+.upgrade-section-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #333;
+}
+
+.upgrade-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.upgrade-filter {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.upgrade-inventory-items, .upgrade-target-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+    overflow-y: auto;
+    padding: 10px;
+    max-height: 100%;
+}
+
+.inventory-item, .upgrade-target {
+    background-color: #262626;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.inventory-item:hover, .upgrade-target:hover {
+    background-color: #333;
+}
+
+.inventory-item.selected, .upgrade-target.selected {
+    background-color: #333;
+    border-color: #4caf50;
+}
+
+/* Item borders by rarity */
+.item-border-common {
+    border-color: #b0c3d9;
+}
+
+.item-border-uncommon {
+    border-color: #5e98d9;
+}
+
+.item-border-rare {
+    border-color: #4b69ff;
+}
+
+.item-border-mythical {
+    border-color: #8847ff;
+}
+
+.item-border-legendary {
+    border-color: #d32ee6;
+}
+
+.item-image {
+    width: 100%;
+    height: auto;
+    max-height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.item-name {
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Item name colors by rarity */
+.common {
+    color: #b0c3d9;
+}
+
+.uncommon {
+    color: #5e98d9;
+}
+
+.rare {
+    color: #4b69ff;
+}
+
+.mythical {
+    color: #8847ff;
+}
+
+.legendary {
+    color: #d32ee6;
+}
+
+.item-price {
+    font-size: 12px;
+    color: #4caf50;
+}
+
+.item-rarity {
+    font-size: 10px;
+    color: #aaa;
+}
+
+/* Upgrade Center */
+.upgrade-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background-color: #1a1a1a;
+    border-radius: 5px;
+    position: relative;
+}
+
+.upgrade-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.value-difference {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.diff-label {
+    font-size: 14px;
+    color: #aaa;
+}
+
+#value-diff {
+    font-size: 16px;
+    color: #4caf50;
+    font-weight: bold;
+}
+
+/* Upgrade Chance Display */
+.upgrade-chance {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.upgrade-chance strong {
+    font-size: 28px;
+    color: #4caf50;
+    margin-top: 10px;
+}
+
+.chance-label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* Upgrade Circle */
+.upgrade-circle-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+}
+
+.upgrade-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #333;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.upgrade-circle-slice {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    transform-origin: left bottom;
+    background-color: #4caf50;
+}
+
+.upgrade-circle-indicator {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 50%;
+    background-color: #fff;
+    transform-origin: bottom center;
+    z-index: 10;
+    animation: rotate-indicator 5s linear infinite;
+}
+
+.upgrade-circle-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #222;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.upgrade-circle-button {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.upgrade-circle-button:hover {
+    background-color: #3e8e41;
+}
+
+.upgrade-circle-button:disabled {
+    background-color: #777;
+    cursor: not-allowed;
+}
+
+@keyframes rotate-indicator {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animation for winning and losing */
+@keyframes win-animation {
+    0% { box-shadow: 0 0 5px 2px rgba(76, 175, 80, 0.5); }
+    50% { box-shadow: 0 0 15px 5px rgba(76, 175, 80, 0.8); }
+    100% { box-shadow: 0 0 5px 2px rgba(76, 175, 80, 0.5); }
+}
+
+@keyframes lose-animation {
+    0% { box-shadow: 0 0 5px 2px rgba(244, 67, 54, 0.5); }
+    50% { box-shadow: 0 0 15px 5px rgba(244, 67, 54, 0.8); }
+    100% { box-shadow: 0 0 5px 2px rgba(244, 67, 54, 0.5); }
+}
+
+.win-animation {
+    animation: win-animation 1s ease-in-out;
+}
+
+.lose-animation {
+    animation: lose-animation 1s ease-in-out;
+}
+
+/* Item disappear animation */
+@keyframes item-disappear {
+    0% { 
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8) rotate(10deg);
+    }
+    100% { 
+        opacity: 0;
+        transform: scale(0) rotate(25deg);
+    }
+}
+
+.upgrade-button {
+    padding: 12px 25px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.upgrade-button:hover {
+    background-color: #3e8e41;
+}
+
+.upgrade-button:disabled, .upgrade-button.disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+.no-items-message {
+    text-align: center;
+    color: #aaa;
+    padding: 20px;
+    font-size: 14px;
+}
+
+/* Upgrade Result */
+.upgrade-result {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.result-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.result-success .result-title {
+    color: #4caf50;
+}
+
+.result-failure .result-title {
+    color: #f44336;
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.result-item img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.result-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.result-price {
+    font-size: 18px;
+    color: #4caf50;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

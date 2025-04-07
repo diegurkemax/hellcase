@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="150px" viewBox="0 0 200 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>No Item</title>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient">
+            <stop stop-color="#444444" offset="0%"></stop>
+            <stop stop-color="#333333" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="No-Item" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Background" fill="url(#linearGradient)" x="0" y="0" width="200" height="150" rx="8"></rect>
+        <g id="Prohibition-Symbol" transform="translate(60, 35)">
+            <circle id="Circle" stroke="#FF4D4D" stroke-width="8" cx="40" cy="40" r="40"></circle>
+            <line x1="15" y1="15" x2="65" y2="65" id="Line" stroke="#FF4D4D" stroke-width="8" stroke-linecap="round"></line>
+        </g>
+        <text id="No-Item-Text" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" font-weight="bold" fill="#CCCCCC" text-anchor="middle" x="100" y="120">
+            NO ITEM
+        </text>
+    </g>
+</svg>

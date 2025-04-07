@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="awpGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#e3c82d"/>
+            <stop offset="100%" stop-color="#f0d87a"/>
+        </linearGradient>
+    </defs>
+    <rect width="300" height="200" fill="#2a2a2a"/>
+    <!-- AWP Simplified Shape -->
+    <path d="M30,100 L60,110 L240,110 L270,100 L240,90 L60,90 Z" fill="url(#awpGradient)"/>
+    <rect x="60" y="85" width="20" height="30" fill="#333"/>
+    <rect x="200" y="98" width="40" height="4" fill="#333"/>
+    <text x="150" y="150" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="16" fill="#ffffff">AWP | Dragon Lore</text>
+</svg>

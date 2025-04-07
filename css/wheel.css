@@ -1,0 +1,538 @@
+/* Wheel of Fortune Styles */
+.wheel-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.wheel-modal {
+    background-color: var(--bg-lighter);
+    border-radius: 10px;
+    width: 95%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.wheel-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.wheel-modal-close:hover {
+    color: var(--primary);
+}
+
+.wheel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.wheel-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.wheel-balance {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.wheel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.wheel-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.wheel-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wheel-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wheel-bet-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.wheel-bet-amount {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.wheel-bet-input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.wheel-bet-input-group input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(30, 30, 30, 0.6);
+    color: var(--text-color);
+    font-size: 16px;
+    border-radius: 5px 0 0 5px;
+    text-align: center;
+}
+
+.wheel-bet-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.wheel-bet-button {
+    background-color: var(--bg-darker);
+    border: 1px solid var(--border-color);
+    border-left: none;
+    color: var(--text-color);
+    padding: 5px 10px;
+    cursor: pointer;
+    display: block;
+    font-weight: 600;
+}
+
+.wheel-bet-button:first-child {
+    border-radius: 0 5px 0 0;
+    border-bottom: none;
+}
+
+.wheel-bet-button:last-child {
+    border-radius: 0 0 5px 0;
+}
+
+.wheel-bet-button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.wheel-bet-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.wheel-bet-preset {
+    background-color: var(--bg-darker);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.wheel-bet-preset:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.wheel-spin-btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 20px;
+}
+
+.wheel-spin-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.wheel-spin-btn:disabled {
+    background-color: var(--secondary);
+    cursor: not-allowed;
+}
+
+.wheel-canvas-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.wheel-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.wheel-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    background-color: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 25px solid var(--primary);
+    z-index: 3;
+}
+
+.wheel-multipliers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    max-width: 400px;
+    justify-content: center;
+}
+
+.wheel-multiplier {
+    background-color: var(--bg-darker);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.wheel-multiplier.active {
+    border-color: var(--primary);
+}
+
+.wheel-history {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.wheel-history h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.wheel-history-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.wheel-history-item {
+    background-color: var(--bg-darker);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.wheel-history-item.win {
+    background-color: var(--primary);
+    color: white;
+}
+
+.wheel-history-item.lose {
+    background-color: #ff5252;
+    color: white;
+}
+
+.wheel-result {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: var(--bg-darker);
+    border-radius: 8px;
+    animation: fade-in 0.5s ease;
+}
+
+.wheel-result.win {
+    border: 2px solid var(--primary);
+}
+
+.wheel-result.lose {
+    border: 2px solid #ff5252;
+}
+
+.result-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.result-title.win {
+    color: var(--primary);
+}
+
+.result-title.lose {
+    color: #ff5252;
+}
+
+.result-multiplier {
+    font-size: 36px;
+    font-weight: 800;
+    margin: 15px 0;
+}
+
+.result-payout {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Rotate animation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Skin reward styles */
+.wheel-skin-reward {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    animation: fade-in 0.5s ease;
+}
+
+.wheel-won-skin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.skin-image-container {
+    width: 150px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.skin-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Border colors based on rarity */
+.item-border-common {
+    border: 2px solid #b0c3d9;
+    box-shadow: 0 0 10px rgba(176, 195, 217, 0.5);
+}
+
+.item-border-uncommon {
+    border: 2px solid #5e98d9;
+    box-shadow: 0 0 10px rgba(94, 152, 217, 0.5);
+}
+
+.item-border-rare {
+    border: 2px solid #4b69ff;
+    box-shadow: 0 0 10px rgba(75, 105, 255, 0.5);
+}
+
+.item-border-mythical {
+    border: 2px solid #8847ff;
+    box-shadow: 0 0 10px rgba(136, 71, 255, 0.5);
+}
+
+.item-border-legendary {
+    border: 2px solid #d32ce6;
+    box-shadow: 0 0 10px rgba(211, 44, 230, 0.5);
+}
+
+.skin-details {
+    text-align: center;
+}
+
+.skin-name {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Text colors based on rarity */
+.common {
+    color: #b0c3d9;
+}
+
+.uncommon {
+    color: #5e98d9;
+}
+
+.rare {
+    color: #4b69ff;
+}
+
+.mythical {
+    color: #8847ff;
+}
+
+.legendary {
+    color: #d32ce6;
+}
+
+.skin-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.skin-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.skin-add-btn, .skin-sell-btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.skin-add-btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+}
+
+.skin-add-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.skin-sell-btn {
+    background-color: #ff5252;
+    color: white;
+    border: none;
+}
+
+.skin-sell-btn:hover {
+    background-color: #ff7575;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .wheel-section {
+        flex-direction: column;
+    }
+    
+    .wheel-canvas-container {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .wheel-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .wheel-won-skin {
+        flex-direction: column;
+    }
+    
+    .skin-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .wheel-canvas-container {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .wheel-bet-presets {
+        gap: 5px;
+    }
+    
+    .wheel-bet-preset {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}

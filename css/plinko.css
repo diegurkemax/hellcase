@@ -1,0 +1,167 @@
+/* Plinko Game Styles */
+.plinko-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.plinko-content {
+    background-color: var(--bg-lighter);
+    border-radius: 10px;
+    padding: 30px;
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+}
+
+.plinko-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.plinko-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.plinko-close:hover {
+    color: var(--primary);
+}
+
+.plinko-game-container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: var(--bg-darker);
+    border-radius: 8px;
+}
+
+.plinko-board {
+    width: 100%;
+    height: 85%;
+    position: relative;
+}
+
+.plinko-row {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 10%;
+    height: 10%;
+}
+
+.plinko-peg {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.plinko-multiplier-row {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+}
+
+.plinko-multiplier-slot {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    border-top: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.high-multiplier {
+    background-color: rgba(0, 204, 102, 0.15);
+    color: var(--primary);
+}
+
+.medium-multiplier {
+    background-color: rgba(255, 187, 0, 0.15);
+    color: #ffbb00;
+}
+
+.low-multiplier {
+    background-color: rgba(255, 69, 58, 0.15);
+    color: #ff453a;
+}
+
+.winning-slot {
+    animation: pulse-bg 0.5s infinite alternate;
+}
+
+@keyframes pulse-bg {
+    0% { background-color: rgba(255, 255, 255, 0.1); }
+    100% { background-color: rgba(255, 255, 255, 0.3); }
+}
+
+.plinko-ball {
+    width: 16px;
+    height: 16px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    transition: all 0.05s ease;
+    box-shadow: 0 0 10px rgba(0, 204, 102, 0.7);
+}
+
+.plinko-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.plinko-bet-amount, .plinko-risk-level {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.plinko-bet-amount input, .plinko-risk-level select {
+    padding: 8px 12px;
+    background-color: var(--bg-darker);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    color: var(--text-color);
+}
+
+#plinko-drop-btn {
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#plinko-drop-btn:hover {
+    background-color: var(--primary-hover);
+}

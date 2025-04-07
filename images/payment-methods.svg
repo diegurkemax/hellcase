@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="30" viewBox="0 0 300 30" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" width="45" height="30" rx="5" fill="#ffffff" opacity="0.8"/>
+    <text x="22.5" y="20" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#333333">VISA</text>
+    
+    <rect x="50" y="0" width="45" height="30" rx="5" fill="#ffffff" opacity="0.8"/>
+    <text x="72.5" y="20" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="10" fill="#333333">MASTERCARD</text>
+    
+    <rect x="100" y="0" width="45" height="30" rx="5" fill="#ffffff" opacity="0.8"/>
+    <text x="122.5" y="20" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#333333">PAYPAL</text>
+    
+    <rect x="150" y="0" width="45" height="30" rx="5" fill="#ffffff" opacity="0.8"/>
+    <text x="172.5" y="20" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#333333">SKRILL</text>
+    
+    <rect x="200" y="0" width="45" height="30" rx="5" fill="#ffffff" opacity="0.8"/>
+    <text x="222.5" y="20" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#333333">BTC</text>
+    
+    <rect x="250" y="0" width="45" height="30" rx="5" fill="#ffffff" opacity="0.8"/>
+    <text x="272.5" y="20" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#333333">ETH</text>
+</svg>

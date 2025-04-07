@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="m4Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#e3c82d"/>
+            <stop offset="100%" stop-color="#ff5722"/>
+        </linearGradient>
+    </defs>
+    <rect width="300" height="200" fill="#2a2a2a"/>
+    <!-- M4A4 Simplified Shape -->
+    <path d="M50,100 L60,110 L220,110 L250,105 L220,90 L60,90 Z" fill="url(#m4Gradient)"/>
+    <rect x="60" y="85" width="20" height="30" fill="#333"/>
+    <rect x="90" y="110" width="10" height="15" fill="#333"/>
+    <rect x="190" y="95" width="30" height="10" fill="#333"/>
+    <text x="150" y="150" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="16" fill="#ffffff">M4A4 | Howl</text>
+</svg>
